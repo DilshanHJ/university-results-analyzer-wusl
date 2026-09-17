@@ -1,4 +1,4 @@
-export type Role = 'ADMIN' | 'LECTURER' | 'STUDENT';
+export type Role = "ADMIN" | "LECTURER" | "STUDENT";
 
 export interface AuthUser {
   id: string;
@@ -23,7 +23,7 @@ export interface ResultRecord {
   grade: string;
   marks: string | null;
   examinationYear: number;
-  status: 'DRAFT' | 'PUBLISHED' | 'WITHHELD';
+  status: "DRAFT" | "PUBLISHED" | "WITHHELD";
 }
 
 export interface ResultSummary {

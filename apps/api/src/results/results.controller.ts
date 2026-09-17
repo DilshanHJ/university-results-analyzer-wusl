@@ -29,6 +29,12 @@ import { ResultsService } from './results.service.js';
 export class ResultsController {
   constructor(private readonly results: ResultsService) {}
 
+  @Roles('ADMIN', 'LECTURER')
+  @Get('entry-options')
+  entryOptions() {
+    return this.results.entryOptions();
+  }
+
   @Get()
   list(@Query() query: ListResultsDto, @CurrentUser() user: AuthenticatedUser) {
     return this.results.list(query, user);

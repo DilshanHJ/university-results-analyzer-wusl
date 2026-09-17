@@ -37,6 +37,34 @@ interface CsvRow {
 export class ResultsService {
   constructor(private readonly database: DatabaseService) {}
 
+  async entryOptions() {
+    const [studentOptions, moduleOptions, gradeOptions] = await Promise.all([
+      this.database.db
+        .select({
+          id: users.id,
+          label: users.fullName,
+          indexNumber: users.indexNumber,
+        })
+        .from(users)
+        .where(and(eq(users.role, 'STUDENT'), eq(users.status, 'ACTIVE')))
+        .orderBy(asc(users.fullName)),
+      this.database.db
+        .select({ id: modules.id, code: modules.code, name: modules.name })
+        .from(modules)
+        .where(eq(modules.isActive, true))
+        .orderBy(asc(modules.code)),
+      this.database.db
+        .select({ grade: gradeScales.grade })
+        .from(gradeScales)
+        .orderBy(asc(gradeScales.sortOrder)),
+    ]);
+    return {
+      students: studentOptions,
+      modules: moduleOptions,
+      grades: gradeOptions.map((item) => item.grade),
+    };
+  }
+
   async list(query: ListResultsDto, actor: AuthenticatedUser) {
     const filters: SQL[] = [];
     if (actor.role === 'STUDENT') {
