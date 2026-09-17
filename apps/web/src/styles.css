@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-950: #071d36;
+  --color-navy-900: #0b294b;
+  --color-navy-800: #123c68;
+  --color-amber-300: #f8c966;
+  --color-amber-400: #f2ad27;
+  --font-display: "Sora", "Avenir Next", "Segoe UI", sans-serif;
+  --font-sans: "Inter", "Segoe UI", sans-serif;
+}
+
+:root { color: #172033; background: #f4f7fb; font-family: var(--font-sans); font-synthesis: none; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+
+.app-background {
+  background:
+    radial-gradient(circle at 86% -8%, rgba(242, 173, 39, .14), transparent 28rem),
+    linear-gradient(180deg, #f8fafc 0%, #f2f6fb 100%);
+}
+
+.login-grid {
+  background-color: #061a31;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 38px 38px;
+}
+
+.metric-glow { position: relative; overflow: hidden; }
+.metric-glow::after {
+  position: absolute; content: ""; width: 7rem; height: 7rem; border-radius: 999px;
+  right: -2rem; top: -3rem; background: rgba(242,173,39,.12); filter: blur(2px);
+}
+
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th { padding: .8rem 1rem; text-align: left; font-size: .69rem; text-transform: uppercase; letter-spacing: .09em; color: #64748b; border-bottom: 1px solid #e2e8f0; background: #f8fafc; }
+.data-table td { padding: .95rem 1rem; border-bottom: 1px solid #eef2f7; font-size: .875rem; color: #334155; }
+.data-table tbody tr { transition: background-color .15s ease; }
+.data-table tbody tr:hover { background: #fafcff; }
+.data-table tbody tr:last-child td { border-bottom: 0; }
+
+.field { display: flex; flex-direction: column; gap: .45rem; }
+.field label { font-size: .78rem; font-weight: 700; color: #475569; }
+.input {
+  width: 100%; height: 2.8rem; border: 1px solid #dbe2ea; border-radius: .75rem; padding: 0 .9rem;
+  color: #0f172a; background: white; outline: none; transition: border-color .15s, box-shadow .15s;
+}
+.input:focus { border-color: #f2ad27; box-shadow: 0 0 0 3px rgba(242,173,39,.15); }
+
+.skeleton { background: linear-gradient(90deg,#eef2f7 25%,#f8fafc 50%,#eef2f7 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.animate-rise { animation: rise .35s ease-out both; }
+
+@media (max-width: 720px) {
+  .data-table th, .data-table td { padding: .72rem .75rem; }
+}

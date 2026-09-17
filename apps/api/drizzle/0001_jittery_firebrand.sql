@@ -1,0 +1,1 @@
+ALTER TABLE "results" ADD CONSTRAINT "results_grade_grade_scales_grade_fk" FOREIGN KEY ("grade") REFERENCES "public"."grade_scales"("grade") ON DELETE restrict ON UPDATE no action;

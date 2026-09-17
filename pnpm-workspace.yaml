@@ -1,0 +1,12 @@
+packages:
+  - apps/*
+
+allowBuilds:
+  '@scarf/scarf': true
+  argon2: true
+  esbuild: true
+
+onlyBuiltDependencies:
+  - '@scarf/scarf'
+  - argon2
+  - esbuild

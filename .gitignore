@@ -1,0 +1,14 @@
+node_modules/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+*.log
+*.tsbuildinfo
+.DS_Store
+.idea/
+.vscode/
+apps/web/src/assets/
+apps/web/public/favicon.svg
+apps/web/public/icons.svg
